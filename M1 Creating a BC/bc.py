@@ -75,7 +75,7 @@ blockchain = Blockchain()
 @app.route('/mine_block', methods = ['GET'])
 def mine_block():
     previous_block = blockchain.get_previous_block()
-    previous_proof = previous_block['prrof']
+    previous_proof = previous_block['proof']
     proof = blockchain.proof_of_work(previous_proof)
     previous_hash = blockchain.hash(previous_block)
     block = blockchain.create_block(proof, previous_hash)
@@ -96,3 +96,7 @@ def get_chain():
 
 # Running the app
 app.run(host ='0.0.0.0', port = 5000)
+
+# Run Postman
+# Add a GET request with 'http://127.0.0.1:5000/' address
+# After the address, add get_chain to view the chain or mine_block to mine the block
